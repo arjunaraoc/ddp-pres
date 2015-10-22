@@ -9,20 +9,116 @@ hitheme     : tomorrow      #
 widgets     : []            # {mathjax, quiz, bootstrap}
 mode        : selfcontained # {standalone, draft}
 knit        : slidify::knit2slides
+ext_widgets : {rCharts: libraries/highcharts}
 ---
 
 ## Project Overview
+<img src="Indian_Railway.svg" align="right"/>
 
-1. Indian Railways is the biggest railway organisation in the world
-2. Lot of data is available from Indian Governement's Open Data platform
-3. Passenger trains and Goods trains are the major categories of traffic
-4. We investigate the contribution of each to the income of Indian Railways
-5. Provide a shiny app for users to experience the power of prediction
+- Indian Railways  is an Indian state-owned enterprise, owned and operated by the Government of India through the Ministry of Railways. 
+- One of the world's largest railway networks comprising 115,000 km (71,000 mi) of track over a route of 65,808 km (40,891 mi) and 7,112 stations.
+- In 2014-15, IR carried 8.397 billion passengers annually or more than 23 million passengers a day  and 1058.81 million tons of freight in the year.
+-Some Indian Railway  data is available from Indian Governement's Open Data platform
+- The passenger and goods train traffic data and Income data are used.
+<a href="https://data.gov.in/catalog/financial-position-indian-railways">Financial position of Indian Railways from 2006-07 to 2012-13</a>
+- We investigate the contribution of each to the income of Indian Railways
+and provide a shiny app for predicting the income based on daily average train traffic(Passenger/Goods) 
 
 --- .class #id 
 
-## Data at a glance
-![plot of chunk unnamed-chunk-1](assets/fig/unnamed-chunk-1-1.png) 
+## Indian Railways Income  at a glance
+
+<div id = 'chart1f9816ca5aa6' class = 'rChart highcharts'></div>
+<script type='text/javascript'>
+    (function($){
+        $(function () {
+            var chart = new Highcharts.Chart({
+ "dom": "chart1f9816ca5aa6",
+"width":            800,
+"height":            400,
+"credits": {
+ "href": null,
+"text": null 
+},
+"exporting": {
+ "enabled": false 
+},
+"title": {
+ "text": null 
+},
+"yAxis": [
+ {
+ "title": {
+ "text": "goods_trains" 
+} 
+} 
+],
+"series": [
+ {
+ "data": [
+ [
+ 10213,
+7122,
+62731 
+],
+[
+ 10368,
+7386,
+71720 
+],
+[
+ 10988,
+7530,
+79862 
+],
+[
+ 11262,
+7558,
+86964 
+],
+[
+ 11824,
+7362,
+94536 
+],
+[
+ 12335,
+7375,
+103917 
+],
+[
+ 12559,
+8178,
+132552 
+] 
+],
+"type": "bubble",
+"marker": {
+ "radius":              3 
+} 
+} 
+],
+"legend": {
+ "enabled": false 
+},
+"xAxis": [
+ {
+ "title": {
+ "text": "psgr_trains" 
+} 
+} 
+],
+"subtitle": {
+ "text": null 
+},
+"id": "chart1f9816ca5aa6",
+"chart": {
+ "renderTo": "chart1f9816ca5aa6" 
+} 
+});
+        });
+    })(jQuery);
+</script>
 
 --- .class #id
 
@@ -30,26 +126,16 @@ knit        : slidify::knit2slides
 ## Prediction algorithm
 
 ```
-## 
-## Call:
 ## lm(formula = income ~ psgr_trains + goods_trains, data = irfa)
-## 
-## Residuals:
-##       1       2       3       4       5       6       7 
-##  3026.5  1950.5 -4713.4 -3159.9   105.0   232.8  2558.5 
-## 
-## Coefficients:
-##                Estimate Std. Error t value Pr(>|t|)    
-## (Intercept)  -3.168e+05  3.362e+04  -9.422 0.000707 ***
-## psgr_trains   1.740e+01  2.075e+00   8.385 0.001107 ** 
-## goods_trains  2.791e+01  5.764e+00   4.842 0.008388 ** 
-## ---
-## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-## 
-## Residual standard error: 3598 on 4 degrees of freedom
-## Multiple R-squared:  0.9839,	Adjusted R-squared:  0.9758 
-## F-statistic: 122.1 on 2 and 4 DF,  p-value: 0.0002595
 ```
+
+```
+##   (Intercept)   psgr_trains  goods_trains 
+## -316759.50987      17.39792      27.91056
+```
+
+- Adding one  daily passenger train increases income by 170M INR
+- Adding one daily goods train increases income by 279M INR
 
 --- .class #id
 

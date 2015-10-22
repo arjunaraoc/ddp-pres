@@ -48,7 +48,7 @@ fit1$call
 fit1$coefficients
 ```
 
-- Adding one  daily passenger train increases income by 170M INR
+- Adding one  daily passenger train increases income by 173M INR
 - Adding one daily goods train increases income by 279M INR
 
 --- .class #id

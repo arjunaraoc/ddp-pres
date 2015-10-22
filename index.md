@@ -134,7 +134,7 @@ and provide a shiny app for predicting the income based on daily average train t
 ## -316759.50987      17.39792      27.91056
 ```
 
-- Adding one  daily passenger train increases income by 170M INR
+- Adding one  daily passenger train increases income by 173M INR
 - Adding one daily goods train increases income by 279M INR
 
 --- .class #id
